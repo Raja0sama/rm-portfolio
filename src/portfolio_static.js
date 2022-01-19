@@ -1,4 +1,5 @@
 const portfolio = {
+  // Resume : Contain Information Regarding Resume Page, all the static reside here, modification here will reflect on the website
   resume: {
     projects: {
       title: "PROJECTS",
@@ -150,6 +151,7 @@ const portfolio = {
     },
     title: "Javascript Full-Stack SSE @Atompoint",
   },
+  // Layout : Contain Information Regarding Layout of the Pages, all the static reside here, modification here will reflect on the website
   layout: {
     right: [
       {
@@ -194,6 +196,7 @@ const portfolio = {
       },
     ],
   },
+  // Contact : Contain Information Regarding Contact Page, all the static reside here, modification here will reflect on the website
   contact: {
     helmet: {
       title: "Raja Osama - Contact Me",
@@ -207,6 +210,7 @@ const portfolio = {
     },
     ending: "Or contact@rajaosama.me",
   },
+  // About : Contain Information Regarding About Page, all the static reside here, modification here will reflect on the website
   About: {
     helmet: {
       title: "Raja Osama - About Me",
@@ -260,7 +264,9 @@ const portfolio = {
               👍 Emoji Lists`,
     ],
   },
+  // Home : Contain Information Regarding Home Page, all the static reside here, modification here will reflect on the website
   home: {
+    showModel: true,
     helmet: {
       title: "Raja Osama - Welcome to Raja Osama's Dev-folio",
     },
@@ -270,6 +276,7 @@ const portfolio = {
                     Software Engineer. I Specialize in Javascript based Tech
                     stacks to create fascinating applications.`,
   },
+  // Projects : Contain Information Regarding Projects Page, all the static reside here, modification here will reflect on the website
   projects: [
     {
       technology: ["React Native", "GraphQL", "Apollo", "WordPress"],

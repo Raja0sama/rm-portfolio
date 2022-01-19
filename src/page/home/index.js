@@ -71,24 +71,26 @@ export default function Home({ data }) {
             </div>
           </div>
         </div>
-        <motion.div
-          id="tt"
-          style={{
-            opacity: 0,
+        {data.showModel && (
+          <motion.div
+            id="tt"
+            style={{
+              opacity: 0,
 
-            position: "absolute",
-            top: 0,
-            right: 0,
-            left: 0,
-            bottom: 0,
-            zIndex: 1,
-          }}
-          custom={8}
-          animate={controls}
-          className="absolute h-full w-full "
-        >
-          <M />
-        </motion.div>
+              position: "absolute",
+              top: 0,
+              right: 0,
+              left: 0,
+              bottom: 0,
+              zIndex: 1,
+            }}
+            custom={8}
+            animate={controls}
+            className="absolute h-full w-full "
+          >
+            <M />
+          </motion.div>
+        )}
       </section>
     </Layout>
   );
