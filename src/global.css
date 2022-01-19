@@ -11,8 +11,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   /* background-color: #16181d; */
-  background-color: black;
-  color: #fff;
+  /* background-color: #040404;
+  color: #fff; */
   font-family: "Poppins", sans-serif;
 }
 
@@ -32,6 +32,12 @@ a {
 .splashLogo {
   font-family: "Poppins", cursive;
   font-weight: bold;
-  font-size: 11em;
+  font-size: 10vw;
   line-height: 0.9;
+}
+
+.vertical-rotate {
+  transform: rotate(180deg);
+  text-transform: uppercase;
+  writing-mode: vertical-lr;
 }

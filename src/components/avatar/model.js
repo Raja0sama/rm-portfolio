@@ -14,8 +14,13 @@ export default function Model({ ...props }) {
     materials.castShadow = true;
     materials.receiveShadow = true;
     if (materials?.material?.map) materials.material.map.anisotropy = 16;
-    actions["idle.001"].play();
+    actions["idle.001"]?.play();
   }, []);
+  const console = () => {
+    return THREE;
+  };
+
+  console(THREE);
 
   return (
     <group ref={group} {...props} dispose={null}>

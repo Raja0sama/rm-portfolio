@@ -4,16 +4,18 @@ import { Suspense, useEffect, useState } from "react";
 
 import { Canvas } from "@react-three/fiber";
 import Model from "./model";
-import { OrbitControls } from "@react-three/drei";
 
 export default function M() {
-  const [visible, setvisible] = useState(false);
   const [position, setposition] = useState([0, 0, 0]);
   useEffect(() => {
-    setInterval((e) => setvisible(true), 1000);
-    setInterval(() => {
-      setposition([0, -1, 0]);
-    }, 1001);
+    setInterval((e) => setposition([0, -1, 0]), 1000);
+    // setInterval(() => {
+    //   setposition([0, -1, 0]);
+    // }, 1001);
+  }, []);
+
+  useEffect(() => {
+    window.model = (e) => setposition(e);
   }, []);
 
   return (
@@ -24,8 +26,22 @@ export default function M() {
           gl.toneMappingExposure = 2;
         }}
         dpr={window.devicePixelRatio}
-        camera={{ position: [0, 1, 3], fov: 38, near: 1, far: -50000 }}
+        camera={{
+          position: [0, 1, 4],
+          fov: 38,
+          near: 1,
+          far: -50000,
+          rotation: [-0.02, 0, 0],
+        }}
       >
+        <Suspense
+          fallback={() => {
+            console.log("loading");
+            return <div>loading</div>;
+          }}
+        >
+          <Model />
+        </Suspense>
         {/* <OrbitControls position={[0, -1, 0]} /> */}
         <directionalLight
           castShadow
@@ -59,16 +75,6 @@ export default function M() {
             },
           }}
         />
-        {visible && (
-          <Suspense
-            fallback={() => {
-              console.log("loading");
-              return <div>loading</div>;
-            }}
-          >
-            <Model position={position} />
-          </Suspense>
-        )}
       </Canvas>
     </div>
   );

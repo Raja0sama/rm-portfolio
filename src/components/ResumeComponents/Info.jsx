@@ -1,4 +1,4 @@
-export function Info() {
+export function Info({ data }) {
   return (
     <div className={"flex mt-10"}>
       <div
@@ -9,31 +9,19 @@ export function Info() {
         }}
         className={"pt-10 text-xl flex justify-center"}
       >
-        <p className={"tracking-widest"}>INFO</p>
+        <p className={"tracking-widest"}>{data.title}</p>
       </div>
       <div className={"px-10 text-base"}>
         <span className={"tracking-widest text-xl text-center"}>
-          Raja Osama
-          <span className={"text-gray-300	font-thin	"}> ,22, ♂</span>
+          {data.name}
+          <span className={"text-gray-300	font-thin	"}>{data.age}</span>
         </span>
-        <p>
-          <span>Email - </span>
-          <span className={"text-gray-300	font-thin	"}>
-            contact@rajaosama.com
-          </span>
-        </p>
-        <p>
-          <span>LinkedIn - </span>
-          <span className={"text-gray-300	font-thin	"}>@rajaosama</span>
-        </p>
-        <p>
-          <span>Github - </span>
-          <span className={"text-gray-300	font-thin	"}>@raja0sama</span>
-        </p>
-        <p>
-          <span>Medium - </span>
-          <span className={"text-gray-300	font-thin	"}>@supersami</span>
-        </p>
+        {data.list.map((e) => (
+          <p>
+            <span>{e[0]}</span>
+            <span className={"text-gray-300	font-thin	"}>{e[1]}</span>
+          </p>
+        ))}
       </div>
     </div>
   );

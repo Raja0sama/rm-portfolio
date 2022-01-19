@@ -1,12 +1,12 @@
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 
-import A from "../../components/bg";
+import { Helmet } from "react-helmet";
 import Layout from "../../components/layout";
 import M from "../../components/avatar";
-import Music from "../../components/music";
+import theme from "../../theme";
+import { useEffect } from "react";
 
-export default function Home() {
+export default function Home({ data }) {
   const controls = useAnimation();
   useEffect(() => {
     controls.start((i) => ({
@@ -14,13 +14,17 @@ export default function Home() {
       x: 0,
       z: 4,
       y: 0,
-      transition: { delay: i * 1 },
+      transition: { delay: i * 0.5 },
     }));
   }, []);
 
   return (
     <Layout>
-      <section className={"w-screen h-screen relative model overflow-hidden"}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{data.helmet.title}</title>
+      </Helmet>
+      <section className={"w-full h-full relative model overflow-hidden"}>
         <div
           className="w-full h-full flex justify-center items-center flex-col relative"
           style={{ zIndex: 10 }}
@@ -31,51 +35,40 @@ export default function Home() {
               style={{ zIndex: 10 }}
             >
               <ul>
+                {data.title.map((e, i) => (
+                  <motion.li
+                    style={{ opacity: 0, x: -100, textAlign: "center" }}
+                    custom={5 + i}
+                    animate={controls}
+                  >
+                    <span className="z-10 text-center">{e}</span>
+                  </motion.li>
+                ))}
+
                 <motion.div
                   style={{ x: -100, opacity: 0 }}
                   animate={controls}
                   custom={4}
-                  className={"w-full min-h-screen	 absolute text-2xl"}
+                  className={" text-2xl text-center"}
                 >
-                  <p>" Senior </p>
-                  <p>Software </p>
-                  <p>Engineer "</p>
+                  {data.subTitle}
                 </motion.div>
-                <motion.li
-                  style={{ opacity: 0, x: -100, textAlign: "center" }}
-                  custom={5}
+                <motion.div
+                  custom={7}
+                  style={{
+                    maxWidth: 600,
+                    width: "100%",
+                    marginTop: 40,
+                    textAlign: "center",
+                    opacity: 0,
+                    y: 100,
+                  }}
                   animate={controls}
                 >
-                  <span className="z-10 text-center">Raja</span>
-                </motion.li>
-                <motion.li
-                  style={{ opacity: 0, x: 100, textAlign: "center" }}
-                  custom={6}
-                  animate={controls}
-                >
-                  <span className="z-10 text-center">Osama</span>
-                </motion.li>
+                  <p className="text-lg font-thin">{data.description}</p>
+                </motion.div>
               </ul>
             </div>
-            <motion.div
-              custom={7}
-              style={{
-                width: 600,
-                marginTop: 40,
-                textAlign: "center",
-                color: "rgba(255,255,255,0.7)",
-                opacity: 0,
-                y: 100,
-                // fontFamily: "Yuji Boku",
-              }}
-              animate={controls}
-            >
-              <p>
-                I Describe my self as a Polyglot ~ Tech Agnostic ~ Rockstar
-                Software Engineer. I Specialize in Javascript based Tech stacks
-                to create fascinating applications.
-              </p>
-            </motion.div>
           </div>
         </div>
         <motion.div
